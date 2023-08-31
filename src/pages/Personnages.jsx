@@ -33,7 +33,7 @@ const Personnages = () => {
       </div>
       <h1>Personnages</h1>
       {personnages.map(personnage => (
-        <div key={personnage._id}>
+        <article key={personnage._id}>
           <h2>{personnage.name}</h2>
           <p>{personnage.description}</p>
           <Link to={`/character/${personnage._id}`}>
@@ -42,7 +42,7 @@ const Personnages = () => {
               alt={personnage.name}
             />
           </Link>
-        </div>
+        </article>
       ))}
     </div>
   );
