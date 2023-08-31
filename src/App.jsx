@@ -20,7 +20,7 @@ function App() {
             path="/characters"
             element={<Personnages search={search} setSearch={setSearch} />}
           />
-          <Route path={"/character/:characterId"} element={<Character />} />
+          <Route path="/character/:characterId" element={<Character />} />
           <Route path="/comics" element={<Comics />} />
           <Route path="/favoris" element={<Favoris />} />
         </Routes>
