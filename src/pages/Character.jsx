@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Character = () => {
-  const [characterId] = useParams();
-  const [character, setCharacter] = useState(null);
-
+  const { characterId } = useParams();
+  const [character, setCharacter] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   console.log(characterId);
+  console.log(character);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,8 +15,9 @@ const Character = () => {
         const response = await axios.get(
           `http://localhost:3000/characters/${characterId}`
         );
-        setCharacter(response.data.results); // Mettre à jour des données
+        setCharacter(response.data); // Mettre à jour des données
         console.log(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.response);
       }
@@ -24,15 +26,19 @@ const Character = () => {
   }, [characterId]);
   return (
     <div>
-      <article key={character._id}>
-        <h2>{character.name}</h2>
-        <p>{character.description}</p>
+      {isLoading ? (
+        <s>Loading</s>
+      ) : (
+        <article key={character._id}>
+          <h2>{character.name}</h2>
+          <p>{character.description}</p>
 
-        <img
-          src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
-          alt={character.name}
-        />
-      </article>
+          <img
+            src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
+            alt={character.name}
+          />
+        </article>
+      )}
     </div>
   );
 };
