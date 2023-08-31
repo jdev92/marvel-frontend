@@ -1,0 +1,52 @@
+/* ------GENERAL------ */
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* ------HEADER------ */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  background-image: url("./assets/marvel-background.jpg");
+  background-size: cover;
+}
+
+.header img {
+  object-fit: cover;
+}
+
+.header-link button {
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  font-size: 15px;
+  height: 30px;
+  outline: none;
+  width: 115px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ------Characters------ */
+.card-character {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.card-character article {
+  width: calc(20% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.card-character article img {
+  max-width: 100%;
+}
