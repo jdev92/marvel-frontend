@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import logoMarvel from "../assets/marvel-logo.png";
-import img from "../assets/marvel-background.jpg";
 
 const Header = () => {
   return (

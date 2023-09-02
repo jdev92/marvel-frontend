@@ -12,6 +12,7 @@
   align-items: center;
   background-image: url("./assets/marvel-background.jpg");
   background-size: cover;
+  padding-bottom: 80px;
 }
 
 .header img {
@@ -25,13 +26,22 @@
   font-size: 15px;
   height: 30px;
   outline: none;
-  width: 115px;
+  width: 110px;
   border: none;
   cursor: pointer;
+  margin-right: 8px;
+}
+
+/* ------HOME------ */
+.home-img {
+  background-image: url("./assets/marvel-home.jpg");
+  object-fit: cover;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* ------Characters------ */
-.card-character {
+.card-character-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -39,14 +49,35 @@
   margin: 0 auto;
 }
 
-.card-character article {
-  width: calc(20% - 10px);
+.card-character {
+  width: calc(33.33% - 10px);
   margin-bottom: 20px;
   padding: 10px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
-.card-character article img {
+.card-character img {
   max-width: 100%;
+  height: auto;
+}
+
+.card-character-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Permet à la description de prendre tout l'espace vertical disponible */
+}
+
+.card-character h2 {
+  margin-bottom: 10px;
+}
+
+.card-character p {
+  margin-top: auto;
+  max-width: 300px;
 }
