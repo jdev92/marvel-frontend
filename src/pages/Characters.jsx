@@ -1,29 +1,41 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const limitPerPage = 100;
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
+
       try {
-        // Requête vers le backend pour récupérer la liste des characters
-        const response = await axios.get(`http://localhost:3000/characters`);
-        // console.log(response.data);
-        setData(response.data); // Mettre à jour des données
+        const response = await axios.get(
+          `http://localhost:3100/characters?skip=${currentPage * limitPerPage}`
+        );
+        setCharacters(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchData();
-  }, [search]); // Utiliser une dépendance vide pour exécuter cette requête une seule fois
+  }, [currentPage]);
+
+  const handleNextPage = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage(currentPage - 1 >= 0 ? currentPage - 1 : 0);
+  };
 
   return (
-    <div>
+    <div className="body-characters">
       {isLoading ? (
         <p>Loading</p>
       ) : (
@@ -39,9 +51,9 @@ const Characters = () => {
                 }}
               />
             </div>
+            <h1>MARVEL CHARACTERS LIST</h1>
             <div className="card-character-container">
-              <h1>characters</h1>
-              {data.map((character) => (
+              {characters.map((character) => (
                 <Link
                   className="card-character"
                   key={character._id}
@@ -49,12 +61,15 @@ const Characters = () => {
                 >
                   <h2>{character.name}</h2>
                   <img
-                    src={`${character.thumbnail.path}/portrait_uncanny.${character.thumbnail.extension}`}
+                    src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
                     alt={character.name}
                   />
-                  <p>{character.description}</p>
                 </Link>
               ))}
+            </div>
+            <div>
+              <button onClick={handlePrevPage}>Previous Page</button>
+              <button onClick={handleNextPage}>Next Page</button>
             </div>
           </main>
         </div>

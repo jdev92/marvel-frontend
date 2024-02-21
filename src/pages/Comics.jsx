@@ -9,7 +9,7 @@ const Comics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/comics");
+        const response = await axios.get("http://localhost:3100/comics");
         setComics(response.data);
         setIsLoading(false);
       } catch (error) {

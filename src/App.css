@@ -41,16 +41,23 @@
 }
 
 /* ------Characters------ */
-.card-character-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.body-characters {
+  background-image: url("");
+}
+
+.container {
   max-width: 1300px;
   margin: 0 auto;
 }
 
+.card-character-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .card-character {
-  width: calc(33.33% - 10px);
+  width: calc(20% - 10px); /* 5 images par ligne */
   margin-bottom: 20px;
   padding: 10px;
   box-sizing: border-box;
@@ -70,7 +77,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Permet à la description de prendre tout l'espace vertical disponible */
 }
 
 .card-character h2 {
@@ -80,4 +86,11 @@
 .card-character p {
   margin-top: auto;
   max-width: 300px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
 }

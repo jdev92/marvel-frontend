@@ -14,7 +14,7 @@ const Character = () => {
       try {
         // Requête vers le backend pour récupérer la liste des personnages
         const response = await axios.get(
-          `http://localhost:3000/character/${characterId}`
+          `http://localhost:3100/character/${characterId}`
         );
 
         setCharacterData(response.data); // Mettre à jour des données
